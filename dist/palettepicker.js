@@ -887,6 +887,10 @@ myActiveChannels.forEach(function (channel) {
     name: name,
     color: color
   });
+  $.write({
+    name: name,
+    color: color
+  });
 });
 app.documents.add(21, 29, 300, "paleta", NewDocumentMode.RGB);
 alert("My Active Channels Info\n" + channels);

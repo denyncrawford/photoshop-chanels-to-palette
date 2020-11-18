@@ -9,6 +9,7 @@ myActiveChannels.forEach(channel => {
     let color = {}
     if (channel.kind == "ChannelType.SPOTCOLOR")  color = channel.color.rgb;
     channels.push({name, color})
+    $.write({name, color})
 })
 
 app.documents.add(21, 29, 300, "paleta", NewDocumentMode.RGB)
