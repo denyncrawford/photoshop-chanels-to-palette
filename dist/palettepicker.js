@@ -881,8 +881,7 @@ var myActiveChannels = doc.activeChannels || [];
 var channels = [];
 myActiveChannels.forEach(function (channel) {
   var name = channel.name;
-  var color = {};
-  if (channel.kind == "ChannelType.SPOTCOLOR") color = channel.color.rgb;
+  var color = channel.kind == "ChannelType.SPOTCOLOR" ? channel.color.rgb : {};
   channels.push({
     name: name,
     color: color

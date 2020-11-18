@@ -6,8 +6,7 @@ let channels = []
 
 myActiveChannels.forEach(channel => {
     let name = channel.name
-    let color = {}
-    if (channel.kind == "ChannelType.SPOTCOLOR")  color = channel.color.rgb;
+    let color = channel.kind == "ChannelType.SPOTCOLOR" ? channel.color.rgb : {};
     channels.push({name, color})
     $.write({name, color})
 })
