@@ -893,7 +893,9 @@ myActiveChannels.forEach(function (channel) {
 });
 app.documents.add(21, 29, 300, "paleta", NewDocumentMode.RGB);
 
-var textLayer = function textLayer(text) {
+var textLayer = function textLayer(_ref) {
+  var name = _ref.name,
+      color = _ref.color;
   var layers = app.activeDocument.artLayers;
   var layer = layers.add();
   layer.kind = LayerKind.TEXT;
@@ -901,13 +903,18 @@ var textLayer = function textLayer(text) {
   textItem.kind = TextType.PARAGRAPHTEXT;
   textItem.size = 30;
   textItem.position = [10, 10];
-  textItem.contents = text;
-  textItem.width = new UnitValue("300 centimeter");
+  textItem.contents = name;
+  var myColor = new SolidColor();
+  myColor.rgb.red = color.red;
+  myColor.rgb.green = color.green;
+  myColor.rgb.blue = color.blue;
+  textItem.color = myColor;
+  textItem.width = new UnitValue("300 pixels");
   textItem.height = new UnitValue("30 pixels");
 };
 
 channels.forEach(function (channel) {
-  textLayer(channel.name);
+  textLayer(channel);
 });
 alert("My Active Channels Info\n" + channels);
 
