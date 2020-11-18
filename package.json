@@ -1,0 +1,17 @@
+{
+  "name": "palette",
+  "version": "1.0.0",
+  "description": "",
+  "main": "palettepicker.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "extendscriptr --script src/palettepicker.js --output dist/palettepicker.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "extendscriptr": "^1.2.6",
+    "gulp": "^4.0.2",
+    "gulp-run": "^1.7.1"
+  }
+}
