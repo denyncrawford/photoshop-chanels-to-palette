@@ -13,7 +13,7 @@ const drawShape = (args, color) => {
   })
   
   var lineArray = [];
-  
+
   for (i = 0; i < y; i++) {
       lineArray[i] = new PathPointInfo;
       lineArray[i].kind = PointKind.CORNERPOINT;
@@ -58,7 +58,7 @@ const textLayer = ({name, color}) => {
     textItem.kind = TextType.PARAGRAPHTEXT;
     textItem.size = 30;
     textItem.position = [3, lastpos];
-    textItem.contents = name;
+    textItem.contents = capitalize(name);
     let myColor = new SolidColor
     myColor.rgb.red = color.red
     myColor.rgb.green = color.green
@@ -69,4 +69,8 @@ const textLayer = ({name, color}) => {
     lastpos++
 }
 
+const capitalize = string => {
+  if (typeof string !== 'string') return ''
+  return string.split(" ").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+}
 export { drawShape, textLayer }

@@ -69,7 +69,7 @@
     textItem.kind = TextType.PARAGRAPHTEXT;
     textItem.size = 30;
     textItem.position = [3, lastpos];
-    textItem.contents = name;
+    textItem.contents = capitalize(name);
     var myColor = new SolidColor();
     myColor.rgb.red = color.red;
     myColor.rgb.green = color.green;
@@ -78,6 +78,13 @@
     textItem.width = new UnitValue(100, "mm");
     textItem.height = new UnitValue(10, "mm");
     lastpos++;
+  };
+
+  var capitalize = function capitalize(string) {
+    if (typeof string !== 'string') return '';
+    return _map(string.split(" "), function (w) {
+      return w.charAt(0).toUpperCase() + w.slice(1);
+    }).join(" ");
   };
 
   var _map$1 = function _map(array, callback) {
