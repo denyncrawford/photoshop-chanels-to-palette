@@ -1,7 +1,3 @@
-/* Code by  Mike Hale http://www.ps-scripts.com/bb/viewtopic.php?f=14&t=1802&start=15
-with small modification by Vladimir Carrer
-*/
-
 const drawShape = (args, color) => {
     
   const doc = app.activeDocument;
