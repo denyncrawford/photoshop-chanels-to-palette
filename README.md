@@ -1,4 +1,4 @@
-# Photoshop channels to color pallete
+# Photoshop channels to color palette
 
 *PCP* is a Photoshop script for getting spot colors from the document channels and place them in a new ready to print document. It is meant to work with the multichannel image mode. 
 
@@ -8,7 +8,7 @@ This is very helpful for secreen printing color samples.
 
 Clone this repo or download the file inside the `/dist` folder.
 
-*Running once*: `File > Scripts > Browse and navigate to the pallettepicker.js’ file and the script will run.`
+*Running once*: `File > Scripts > Browse and navigate to the palettepicker.js’ file and the script will run.`
 
 *Installing*: Copy the file into the Photoshop Scripts directory:
   - MacOS: `/Applications/Adobe Photoshop [VERSION]/Presets/Scripts/`
