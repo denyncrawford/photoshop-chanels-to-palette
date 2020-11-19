@@ -16,6 +16,10 @@ Clone this repo or download the file inside the `/dist` folder.
 
 Restart Photoshop. Installed script should appear under File > Scripts menu.
 
+## Screenshots
+
+![multichannel](https://imgur.com/BiYhG3X)
+![palette](https://imgur.com/zXzPdp0)
 
 ## How it works:
 
