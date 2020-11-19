@@ -16,6 +16,17 @@ Clone this repo or download the file inside the `/dist` folder.
 
 Restart Photoshop. Installed script should appear under File > Scripts menu.
 
+## Usage
+
+1. Open a multichannel image photoshop project.
+2. Make sure all your channels are spot-colors.
+3. Select the channel you wanna get the palette:
+
+![sample](https://imgur.com/cc0q55u.png)
+
+3. Run the script
+5. Do whatever you want with the generated palette.
+
 ## Screenshots
 
 ![multichannel](https://imgur.com/BiYhG3X.png)
