@@ -20,7 +20,7 @@ Restart Photoshop. Installed script should appear under File > Scripts menu.
 
 1. Open a multichannel image photoshop project.
 2. Make sure all your channels are spot-colors.
-3. Select the channel you wanna get the palette:
+3. Select the channels you wanna get the palette:
 
 ![sample](https://imgur.com/cc0q55u.png)
 
@@ -34,7 +34,7 @@ Restart Photoshop. Installed script should appear under File > Scripts menu.
 
 ## How it works:
 
-*PCP* takes the title and the RGB color mixture of your channel and generate a color palette in a different document with the taken data.
+*PCP* takes the title and the RGB color mixture of your selected channels and generate a color palette in a different document with the taken data.
 
 ## Context
 
