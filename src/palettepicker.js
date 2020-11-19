@@ -1,5 +1,6 @@
+import { drawShape, textLayer } from './methods'
+
 const doc = app.activeDocument;
-const layer = doc.activeLayer;
 const myActiveChannels = doc.activeChannels || []
 
 let channels = []
@@ -13,26 +14,13 @@ myActiveChannels.forEach(channel => {
 
 app.documents.add(21, 29, 300, "paleta", NewDocumentMode.RGB)
 
-const textLayer = ({name, color}) => {
-    let layers = app.activeDocument.artLayers;
-    let layer = layers.add();
-    layer.kind = LayerKind.TEXT;
-    let textItem = layer.textItem;
-    textItem.kind = TextType.PARAGRAPHTEXT;
-    textItem.size = 30;
-    textItem.position = [10, 10];
-    textItem.contents = name;
-    let myColor = new SolidColor
-    myColor.rgb.red = color.red
-    myColor.rgb.green = color.green
-    myColor.rgb.blue = color.blue
-    textItem.color = myColor
-    textItem.width = new UnitValue("300 pixels");
-    textItem.height = new UnitValue("30 pixels");
-}
+const unit = u => 118.11 * u;
+
+let y = [unit(1), unit(2), unit(2), unit(1)];
+let draw = [[unit(1), y[0]], [unit(1), y[1]], [unit(2), y[2]], [unit(2), y[3]]];
 
 channels.forEach(channel => {
-    textLayer(channel) 
+    textLayer(channel)
+    drawShape(draw, channel.color)
+    y = y.map(el => el + unit(1))
 })
-
-alert("My Active Channels Info\n" + channels );
