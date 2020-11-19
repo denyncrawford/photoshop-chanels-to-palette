@@ -1,4 +1,4 @@
-var run = require('gulp-run');
+const run = require('gulp-run');
 const { watch } = require('gulp');
 
 const js = (cb) => {
