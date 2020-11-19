@@ -113,10 +113,6 @@
       name: name,
       color: color
     });
-    $.write({
-      name: name,
-      color: color
-    });
   });
 
   app.documents.add(21, 29, 300, "paleta", NewDocumentMode.RGB);

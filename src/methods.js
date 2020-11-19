@@ -4,7 +4,7 @@ const drawShape = (args, color) => {
   let y = args.length;
   let i = 0;
 
-  var docCoef = doc.resolution / 72;
+  const docCoef = doc.resolution / 72;
 
   args = args.map(arr => {
     return arr.map(coor => {
@@ -12,7 +12,7 @@ const drawShape = (args, color) => {
     })
   })
   
-  var lineArray = [];
+  let lineArray = [];
 
   for (i = 0; i < y; i++) {
       lineArray[i] = new PathPointInfo;
@@ -73,4 +73,5 @@ const capitalize = string => {
   if (typeof string !== 'string') return ''
   return string.split(" ").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
 }
+
 export { drawShape, textLayer }
