@@ -11,6 +11,8 @@
     return newArray;
   };
 
+  var originalDocName = app.activeDocument.name;
+
   var drawShape = function drawShape(args, color) {
     var doc = app.activeDocument;
     var y = args.length;
@@ -61,22 +63,76 @@
 
   var textLayer = function textLayer(_ref) {
     var name = _ref.name,
-        color = _ref.color;
+        color = _ref.color,
+        h = _ref.h,
+        w = _ref.w,
+        size = _ref.size,
+        l = _ref.l,
+        cap = _ref.cap;
     var layers = app.activeDocument.artLayers;
     var layer = layers.add();
     layer.kind = LayerKind.TEXT;
     var textItem = layer.textItem;
     textItem.kind = TextType.PARAGRAPHTEXT;
-    textItem.size = 30;
-    textItem.position = [3, lastpos];
-    textItem.contents = capitalize(name);
+    textItem.size = size || 30;
+    textItem.position = [l || 3, lastpos];
+    textItem.contents = cap ? capitalize(name) : name;
     var myColor = new SolidColor();
     myColor.rgb.red = color.red;
     myColor.rgb.green = color.green;
     myColor.rgb.blue = color.blue;
     textItem.color = myColor;
-    textItem.width = new UnitValue(100, "mm");
-    textItem.height = new UnitValue(10, "mm");
+    textItem.width = new UnitValue(w || 100, "mm");
+    textItem.height = new UnitValue(h || 10, "mm");
+    lastpos++;
+  };
+
+  var addDescription = function addDescription() {
+    lastpos++;
+    var name = "Este documento es una referencia de la paleta de colores del dise\xF1o adjunto.";
+    var color = {
+      red: 0,
+      green: 0,
+      blue: 0
+    };
+    var options = {
+      name: name,
+      color: color,
+      h: 180,
+      w: 180,
+      l: 1
+    };
+    textLayer(options);
+  };
+
+  var strokeAll = function strokeAll() {
+    app.preferences.rulerUnits = Units.PIXELS;
+    var strokeColor = new SolidColor();
+    strokeColor.cmyk.cyan = 0;
+    strokeColor.cmyk.magenta = 0;
+    strokeColor.cmyk.yellow = 0;
+    strokeColor.cmyk.black = 100;
+    app.activeDocument.selection.selectAll();
+    app.activeDocument.selection.stroke(strokeColor, 2, StrokeLocation.INSIDE);
+    app.activeDocument.selection.deselect();
+    app.preferences.rulerUnits = Units.CM;
+  };
+
+  var addTitle = function addTitle() {
+    var name = "PALETA:";
+    var color = {
+      red: 0,
+      green: 0,
+      blue: 0
+    };
+    var options = {
+      name: name,
+      color: color,
+      h: 20,
+      size: 50,
+      l: 1
+    };
+    textLayer(options);
     lastpos++;
   };
 
@@ -111,7 +167,8 @@
     var color = channel.kind == "ChannelType.SPOTCOLOR" ? channel.color.rgb : {};
     channels.push({
       name: name,
-      color: color
+      color: color,
+      cap: true
     });
   });
 
@@ -121,7 +178,8 @@
     return 118.11 * u;
   };
 
-  var y = [unit(1), unit(2), unit(2), unit(1)];
+  var y = [unit(3), unit(4), unit(4), unit(3)];
+  addTitle();
 
   _forEach(channels, function (channel) {
     textLayer(channel);
@@ -130,5 +188,8 @@
       return el + unit(1);
     });
   });
+
+  addDescription();
+  strokeAll();
 
 }());

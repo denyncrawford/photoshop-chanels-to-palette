@@ -1,3 +1,5 @@
+const originalDocName = app.activeDocument.name;
+
 const drawShape = (args, color) => {
     
   const doc = app.activeDocument;
@@ -50,23 +52,39 @@ const drawShape = (args, color) => {
 
 let lastpos = 1
 
-const textLayer = ({name, color}) => {
+const textLayer = ({name, color, h, w, size, l, cap}) => {
     let layers = app.activeDocument.artLayers;
     let layer = layers.add();
     layer.kind = LayerKind.TEXT;
     let textItem = layer.textItem;
     textItem.kind = TextType.PARAGRAPHTEXT;
-    textItem.size = 30;
-    textItem.position = [3, lastpos];
-    textItem.contents = capitalize(name);
+    textItem.size = size || 30;
+    textItem.position = [l || 3, lastpos];
+    textItem.contents = cap ? capitalize(name) : name;
     let myColor = new SolidColor
     myColor.rgb.red = color.red
     myColor.rgb.green = color.green
     myColor.rgb.blue = color.blue
     textItem.color = myColor
-    textItem.width = new UnitValue(100,"mm");
-    textItem.height = new UnitValue(10 ,"mm");
+    textItem.width = new UnitValue(w || 100,"mm");
+    textItem.height = new UnitValue(h || 10 ,"mm");
     lastpos++
+}
+
+const addDescription = () => {
+  lastpos++
+  let name = `Este documento es una referencia de la paleta de colores del diseño adjunto.`
+  let color = { red:0, green:0, blue:0}
+  let options = { name, color, h:180, w:180, l:1 }
+  textLayer(options)
+}
+
+const addTitle = () => {
+  let name = "PALETA:";
+  let color = { red:0, green:0, blue:0}
+  let options = { name ,color, h:20, size: 50, l:1 }
+  textLayer(options)
+  lastpos++
 }
 
 const capitalize = string => {
@@ -74,4 +92,4 @@ const capitalize = string => {
   return string.split(" ").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
 }
 
-export { drawShape, textLayer }
+export { drawShape, textLayer, addDescription, addTitle }
