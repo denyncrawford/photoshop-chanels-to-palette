@@ -17,10 +17,9 @@ app.documents.add(21, 29, 300, "paleta", NewDocumentMode.RGB)
 const unit = u => 118.11 * u;
 
 let y = [unit(1), unit(2), unit(2), unit(1)];
-let draw = [[unit(1), y[0]], [unit(1), y[1]], [unit(2), y[2]], [unit(2), y[3]]];
 
 channels.forEach(channel => {
     textLayer(channel)
-    drawShape(draw, channel.color)
+    drawShape([[unit(1), y[0]], [unit(1), y[1]], [unit(2), y[2]], [unit(2), y[3]]], channel.color)
     y = y.map(el => el + unit(1))
 })

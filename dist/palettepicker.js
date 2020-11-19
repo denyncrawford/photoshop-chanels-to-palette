@@ -11,9 +11,6 @@
     return newArray;
   };
 
-  /* Code by  Mike Hale http://www.ps-scripts.com/bb/viewtopic.php?f=14&t=1802&start=15
-  with small modification by Vladimir Carrer
-  */
   var drawShape = function drawShape(args, color) {
     var doc = app.activeDocument;
     var y = args.length;
@@ -122,11 +119,10 @@
   };
 
   var y = [unit(1), unit(2), unit(2), unit(1)];
-  var draw = [[unit(1), y[0]], [unit(1), y[1]], [unit(2), y[2]], [unit(2), y[3]]];
 
   _forEach(channels, function (channel) {
     textLayer(channel);
-    drawShape(draw, channel.color);
+    drawShape([[unit(1), y[0]], [unit(1), y[1]], [unit(2), y[2]], [unit(2), y[3]]], channel.color);
     y = _map$1(y, function (el) {
       return el + unit(1);
     });

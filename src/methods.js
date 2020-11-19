@@ -13,6 +13,7 @@ const drawShape = (args, color) => {
   })
   
   var lineArray = [];
+  
   for (i = 0; i < y; i++) {
       lineArray[i] = new PathPointInfo;
       lineArray[i].kind = PointKind.CORNERPOINT;
@@ -21,24 +22,24 @@ const drawShape = (args, color) => {
       lineArray[i].rightDirection = lineArray[i].anchor;
   }
 
-  var lineSubPathArray = new SubPathInfo();
+  let lineSubPathArray = new SubPathInfo();
   lineSubPathArray.closed = true;
   lineSubPathArray.operation = ShapeOperation.SHAPEADD;
   lineSubPathArray.entireSubPath = lineArray;
   var myPathItem = doc.pathItems.add("myPath", [lineSubPathArray]);
   
 
-  var desc88 = new ActionDescriptor();
-  var ref60 = new ActionReference();
+  let desc88 = new ActionDescriptor();
+  let ref60 = new ActionReference();
   ref60.putClass(stringIDToTypeID("contentLayer"));
   desc88.putReference(charIDToTypeID("null"), ref60);
-  var desc89 = new ActionDescriptor();
-  var desc90 = new ActionDescriptor();
-  var desc91 = new ActionDescriptor();
+  let desc89 = new ActionDescriptor();
+  let desc90 = new ActionDescriptor();
+  let desc91 = new ActionDescriptor();
   desc91.putDouble(charIDToTypeID("Rd  "), color.red); // R
   desc91.putDouble(charIDToTypeID("Grn "), color.green); // G
   desc91.putDouble(charIDToTypeID("Bl  "), color.blue); // B
-  var id481 = charIDToTypeID("RGBC");
+  let id481 = charIDToTypeID("RGBC");
   desc90.putObject(charIDToTypeID("Clr "), id481, desc91);
   desc89.putObject(charIDToTypeID("Type"), stringIDToTypeID("solidColorLayer"), desc90);
   desc88.putObject(charIDToTypeID("Usng"), stringIDToTypeID("contentLayer"), desc89);
