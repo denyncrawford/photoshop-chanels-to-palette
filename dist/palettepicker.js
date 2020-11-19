@@ -87,55 +87,6 @@
     lastpos++;
   };
 
-  var addDescription = function addDescription() {
-    lastpos++;
-    var name = "Este documento es una referencia de la paleta de colores del dise\xF1o adjunto.";
-    var color = {
-      red: 0,
-      green: 0,
-      blue: 0
-    };
-    var options = {
-      name: name,
-      color: color,
-      h: 180,
-      w: 180,
-      l: 1
-    };
-    textLayer(options);
-  };
-
-  var strokeAll = function strokeAll() {
-    app.preferences.rulerUnits = Units.PIXELS;
-    var strokeColor = new SolidColor();
-    strokeColor.cmyk.cyan = 0;
-    strokeColor.cmyk.magenta = 0;
-    strokeColor.cmyk.yellow = 0;
-    strokeColor.cmyk.black = 100;
-    app.activeDocument.selection.selectAll();
-    app.activeDocument.selection.stroke(strokeColor, 2, StrokeLocation.INSIDE);
-    app.activeDocument.selection.deselect();
-    app.preferences.rulerUnits = Units.CM;
-  };
-
-  var addTitle = function addTitle() {
-    var name = "PALETA:";
-    var color = {
-      red: 0,
-      green: 0,
-      blue: 0
-    };
-    var options = {
-      name: name,
-      color: color,
-      h: 20,
-      size: 50,
-      l: 1
-    };
-    textLayer(options);
-    lastpos++;
-  };
-
   var capitalize = function capitalize(string) {
     if (typeof string !== 'string') return '';
     return _map(string.split(" "), function (w) {
@@ -178,8 +129,7 @@
     return 118.11 * u;
   };
 
-  var y = [unit(3), unit(4), unit(4), unit(3)];
-  addTitle();
+  var y = [unit(1), unit(2), unit(2), unit(1)];
 
   _forEach(channels, function (channel) {
     textLayer(channel);
@@ -188,8 +138,5 @@
       return el + unit(1);
     });
   });
-
-  addDescription();
-  strokeAll();
 
 }());

@@ -73,7 +73,7 @@ const textLayer = ({name, color, h, w, size, l, cap}) => {
 
 const addDescription = () => {
   lastpos++
-  let name = `Este documento es una referencia de la paleta de colores del diseño adjunto.`
+  let name = `Este documento es una referencia de la paleta de colores del diseño adjunto, el orden de los cuadros se sigue de arriba hacia abajo.`
   let color = { red:0, green:0, blue:0}
   let options = { name, color, h:180, w:180, l:1 }
   textLayer(options)
