@@ -18,8 +18,8 @@ Restart Photoshop. Installed script should appear under File > Scripts menu.
 
 ## Screenshots
 
-![multichannel](https://imgur.com/BiYhG3X)
-![palette](https://imgur.com/zXzPdp0)
+![multichannel](https://imgur.com/BiYhG3X.png)
+![palette](https://imgur.com/zXzPdp0.png)
 
 ## How it works:
 
