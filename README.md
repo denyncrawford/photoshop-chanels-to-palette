@@ -46,3 +46,7 @@ Make sure your colors are selected by the photoshop's color selector itself with
 4. Run this command to build the bundle.
 
  `$ npm run build`
+
+5. If you want to automatic build when any file inside `/src` changes, then run:
+
+`$ gulp`
